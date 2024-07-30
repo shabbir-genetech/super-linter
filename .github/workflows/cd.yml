@@ -29,7 +29,7 @@ jobs:
             target: standard
     timeout-minutes: 60
     env:
-      CONTAINER_IMAGE_ID: "ghcr.io/super-linter/super-linter:${{ matrix.images.prefix }}latest"
+      CONTAINER_IMAGE_ID: "ghcr.io/shabbir-genetech/super-linter:${{ matrix.images.prefix }}latest"
       CONTAINER_IMAGE_TARGET: "${{ matrix.images.target }}"
     steps:
       - name: Checkout Code
@@ -199,19 +199,19 @@ jobs:
         if: steps.release.outputs.release_created
         uses: akhilerm/tag-push-action@v2.2.0
         with:
-          src: ghcr.io/super-linter/super-linter:latest
+          src: ghcr.io/shabbir-genetech/super-linter:latest
           dst: |
-            ghcr.io/super-linter/super-linter:${{ env.SEMVER_MAJOR_VERSION }}
-            ghcr.io/super-linter/super-linter:${{ env.RELEASE_VERSION }}
+            ghcr.io/shabbir-genetech/super-linter:${{ env.SEMVER_MAJOR_VERSION }}
+            ghcr.io/shabbir-genetech/super-linter:${{ env.RELEASE_VERSION }}
 
       - name: Retag and Push Images slim
         if: steps.release.outputs.release_created
         uses: akhilerm/tag-push-action@v2.2.0
         with:
-          src: ghcr.io/super-linter/super-linter:slim-latest
+          src: ghcr.io/shabbir-genetech/super-linter:slim-latest
           dst: |
-            ghcr.io/super-linter/super-linter:slim-${{ env.SEMVER_MAJOR_VERSION }}
-            ghcr.io/super-linter/super-linter:slim-${{ env.RELEASE_VERSION }}
+            ghcr.io/shabbir-genetech/super-linter:slim-${{ env.SEMVER_MAJOR_VERSION }}
+            ghcr.io/shabbir-genetech/super-linter:slim-${{ env.RELEASE_VERSION }}
 
       - uses: actions/checkout@v4
         with:
